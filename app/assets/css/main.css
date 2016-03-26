@@ -1,0 +1,207 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font: 400 14px/1.5 'Open Sans', sans-serif;
+    color: #000;
+}
+
+
+.wrapper {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.section {
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 60px 0 0;
+}
+.section.dishes {
+    float: left;
+    width: 60%;
+    background: #f2eddb;
+}
+.section.order {
+    float: left;
+    width: 40%;
+    background: #e6e6e6;
+}
+.section-title {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 0;
+    height: 60px;
+    padding: 0 40px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 60px;
+}
+.section.dishes .section-title {
+    background: #fff;
+    color: #000;
+}
+.section.order .section-title {
+    background: #9b9b9b;
+    color: #fff;
+}
+.section-content {
+    height: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+
+.dishes-title {
+    margin: 0 0 30px;
+    padding: 0 0 0.3em;
+    border-bottom: 2px solid #000;
+    font-weight: 400;
+    font-size: 1.7em;
+    line-height: 1.2;
+    text-transform: capitalize;
+}
+.dishes-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.dishes-list li {
+    margin: 0 0 30px;
+}
+
+
+.dish {
+    overflow: hidden;
+}
+.dish-image {
+    float: left;
+    width: 120px;
+    height: 100px;
+    margin: 0 20px 0 0;
+    background: #000;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 100px;
+    text-align: center;
+    color: #888;
+}
+.dish-content {
+    font-size: 12px;
+    color: #888;
+    overflow: hidden;
+}
+.dish-name {
+    margin: 0.3em 0;
+    font-weight: 400;
+    font-size: 1.5em;
+    line-height: 1.2;
+    color: #000;
+}
+.dish-text {
+    max-width: 420px;
+    margin: 0 80px 1em 0;
+}
+.dish-text,
+.dish-info {
+    display: inline-block;
+    vertical-align: top;
+}
+.dish-weight,
+.dish-price {
+    display: inline-block;
+    margin: 0 20px 0.5em 0;
+}
+.dish-weight { width: 60px; }
+.dish-price { width: 80px; }
+.dish-weight,
+.dish-price,
+.dish-order {
+    vertical-align: baseline;
+}
+
+
+.order-form {
+    margin: 0;
+    padding: 0;
+}
+.order-table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+.order-table td {
+    padding: 6px;
+    text-align: right;
+    vertical-align: baseline;
+}
+.order-table td:first-child { padding-left: 0; }
+.order-table td:last-child { padding-right: 0; }
+.order-table tbody td:first-child { text-align: left; }
+.order-table tbody tr:last-child td {
+    padding-bottom: 20px;
+}
+.order-table tfoot tr:first-child td {
+    padding-top: 20px;
+    border-top: 2px solid #000;
+}
+
+
+.textfield {
+    display: inline-block;
+    height: 30px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 0.8em;
+    border: 1px solid #000;
+    background: #fff;
+    box-shadow: none;
+    font: 400 12px/28px 'Open Sans', sans-serif;
+    color: #000;
+}
+.textfield[type="number"] {
+    width: 50px;
+}
+.textfield:focus {
+    outline: none;
+}
+
+
+.button {
+    display: inline-block;
+    height: 30px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 0.8em;
+    border: none;
+    background: #000;
+    box-shadow: none;
+    font: 400 12px/30px 'Open Sans', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.2s ease 0s;
+    cursor: pointer;
+}
+.button:hover,
+.button:active {
+    background: #888;
+}
+.button:focus {
+    outline: none;
+}
+
+
+.icon-close {
+    font-size: 1.8em;
+    line-height: 1;
+    cursor: pointer;
+}

@@ -1,0 +1,66 @@
+<!-- Dishes -->
+<div class="dishes section">
+    <h2 class="section-title">Dishes</h2>
+    <div class="section-content">
+
+        <div class="dishes-group" ng-repeat="cat in cats">
+            <h3 class="dishes-title">{{cat}}</h3>
+            <ul class="dishes-list">
+
+                <li class="dish" ng-repeat="dish in dishes | filterByCategory : cat | orderBy : 'name'">
+                    <img class="dish-image" ng-src="{{dish.image_url}}" alt="{{dish.name}}"/>
+                    <div class="dish-content">
+                        <h4 class="dish-name">{{dish.name}}</h4>
+                        <div class="dish-description">
+                            <p class="dish-text">{{dish.description}}<br/>{{dish.category}}</p>
+                            <div class="dish-info">
+                                <span class="dish-weight">{{dish.weight + ' gram'}}</span>
+                                <span class="dish-price">{{(dish.price | number : 2) + ' grn'}}</span>
+                                <span class="dish-order">
+                                    <button class="button" ng-click="addToOrder(dish)">Add to order</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<!-- Order -->
+<div class="order section">
+    <h2 class="section-title">Order</h2>
+    <div class="section-content">
+
+        <form class="order-form" action="">
+
+            <table class="order-table">
+                <tbody>
+                    <tr>
+                        <td>Dish name</td>
+                        <td>
+                            <input class="textfield number" type="number" value="2" max="20" min="1">
+                        </td>
+                        <td>25.50 grn</td>
+                        <td><span class="icon-close">&times;</span></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">204.00 grn</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <button class="button">Create an order</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "name":"Smoked Haddoc & Leek Pancake",
+    "category": "drinks",
+    "description": "Lorem ipsum dolor sit amet.",
+    "image_url": "assets/img/dishes.jpg",
+    "weight": "400",
+    "price":"7.25"
+  },
+  {
+    "id": "2",
+    "name":"Homemade Chicken Liver Parfait",
+    "category": "drinks",
+    "description": "Lorem ipsum dolor sit amet.",
+    "image_url": "assets/img/dishes.jpg",
+    "weight": "400",
+    "price":"6.90"
+  },
+  {
+    "id": "3",
+    "name":"Soft Shell Crab",
+    "category": "desserts",
+    "description": "Lorem ipsum dolor sit amet.",
+    "image_url": "assets/img/dishes.jpg",
+    "weight": "400",
+    "price":"7.95"
+  },
+  {
+    "id": "4",
+    "name":"Tom's Oysters",
+    "category": "desserts",
+    "description": "Lorem ipsum dolor sit amet.",
+    "image_url": "assets/img/dishes.jpg",
+    "weight": "400",
+    "price":"9.95"
+  },
+  {
+    "id": "5",
+    "name":"Tempura Battered King Prawns",
+    "category": "main",
+    "description": "Lorem ipsum dolor sit amet.",
+    "image_url": "assets/img/dishes.jpg",
+    "weight": "400",
+    "price":"8.25"
+  }
+]
