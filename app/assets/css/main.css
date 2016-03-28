@@ -160,13 +160,14 @@ body {
     display: inline-block;
     height: 30px;
     box-sizing: border-box;
-    margin: 0;
+    margin: 0.1em 0;
     padding: 0 0.8em;
     border: 1px solid #000;
     background: #fff;
     box-shadow: none;
     font: 400 12px/28px 'Open Sans', sans-serif;
     color: #000;
+    vertical-align: baseline;
 }
 .textfield[type="number"] {
     width: 50px;
@@ -183,7 +184,7 @@ body {
     display: inline-block;
     height: 30px;
     box-sizing: border-box;
-    margin: 0;
+    margin: 0.1em 0;
     padding: 0 0.8em;
     border: none;
     background: #000;
@@ -191,6 +192,7 @@ body {
     font: 400 12px/30px 'Open Sans', sans-serif;
     color: #fff;
     text-decoration: none;
+    vertical-align: baseline;
     transition: background 0.2s ease 0s;
     cursor: pointer;
 }
