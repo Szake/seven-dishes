@@ -175,7 +175,7 @@ body {
 .textfield:focus {
     outline: none;
 }
-.textfield.ng-invalid {
+.textfield.ng-dirty.ng-invalid {
     border-color: #f00;
 }
 

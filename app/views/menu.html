@@ -2,7 +2,7 @@
 <div class="dishes section">
     <h2 class="section-title">Dishes</h2>
     <div class="section-content">
-
+        <div class="dishes-errors">{{dishesErrors}}</div>
         <div class="dishes-group" ng-repeat="category in categories">
             <h3 class="dishes-title">{{category}}</h3>
             <ul class="dishes-list">
@@ -34,19 +34,17 @@
 <div class="order section">
     <h2 class="section-title">Order</h2>
     <div class="section-content">
-
-        <form class="order-form" name="order" action="">
+        <div class="order-errors">{{orderErrors}}</div>
+        <form class="order-form" ng-submit="submitOrder()" name="order" action="">
 
             <table class="order-table">
                 <tbody>
-                    <tr ng-repeat="item in order">
+                    <tr ng-repeat="item in orderList">
                         <td>{{item.name}}</td>
-                        <td>{{(item.price | number : 2) + ' grn'}}</td>
                         <td>
-                            <!--<input class="textfield number" type="number" value="{{item.quantity}}" max="20" min="1">-->
-                            <input ng-model="quantity" value="{{item.quantity}}" ng-change="updateItemQuantity(item, quantity)"
-                                   class="textfield" type="number"  max="20" min="1">
+                            <input class="textfield" ng-model="item.quantity" ng-change="updateItemQuantity(item)" type="number" max="{{orderItemMaxQuantity}}" min="1">
                         </td>
+                        <td>{{(item.getSum() | number : 2) + ' grn'}}</td>
                         <td><span class="icon-close" ng-click="removeFromOrder(item)">&times;</span></td>
                     </tr>
                 </tbody>
@@ -56,8 +54,8 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <input class="textfield" type="text" value="" placeholder="Name" maxlength="20"/>
-                            <input class="textfield" type="tel" value="" placeholder="Phone" maxlength="20"/>
+                            <input class="textfield" ng-model="orderName" type="text" placeholder="Name" maxlength="20" required/>
+                            <input class="textfield" ng-model="orderPhone" type="tel" ng-pattern="orderPhonePattern" placeholder="Phone" maxlength="20" required/>
                             <button class="button">Create an order</button>
                         </td>
                     </tr>

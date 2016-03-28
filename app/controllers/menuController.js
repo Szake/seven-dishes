@@ -1,4 +1,4 @@
-app.controller('menuCtrl', ['$rootScope', '$scope', '$log', 'dishes', 'orders', function($rootScope, $scope, $log, dishesFactory, orders) {
+app.controller('menuCtrl', ['$scope', '$log', 'dishes', 'orders', 'helpers', function($scope, $log, dishesFactory, orders, helpers) {
 
   dishesFactory.getDishes().then(
     function(response) {
@@ -17,11 +17,14 @@ app.controller('menuCtrl', ['$rootScope', '$scope', '$log', 'dishes', 'orders', 
     },
     function(){
       $log.error('Failed to download dishes.');
+      $scope.dishesErrors = 'There are no dishes.';
     }
   );
 
-  $scope.order = orders.getOrderItems();
+  $scope.orderList = orders.getOrderItems();
   $scope.orderTotal = orders.getOrderTotal();
+  $scope.orderPhonePattern = helpers.getPhonePattern();
+  $scope.orderItemMaxQuantity = orders.getMaxQuantity();
 
   $scope.addToOrder = function(dish) {
     orders.addToOrder(dish);
@@ -30,8 +33,13 @@ app.controller('menuCtrl', ['$rootScope', '$scope', '$log', 'dishes', 'orders', 
     orders.removeFromOrder(item);
   };
 
-  $scope.updateItemQuantity = function(item, quantity) {
-    orders.updateItemQuantity(item, quantity);
+  $scope.submitOrder = function() {
+    $log.info('Submitting form...');
+    $log.info(orders.createOrder($scope.orderName, $scope.orderPhone));
+  };
+
+  $scope.updateItemQuantity = function(item) {
+    orders.updateItemQuantity(item);
   };
 
   $scope.$on('orders:updateTotal', function(event, newTotal) {
