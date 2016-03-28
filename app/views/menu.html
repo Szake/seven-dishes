@@ -3,18 +3,18 @@
     <h2 class="section-title">Dishes</h2>
     <div class="section-content">
 
-        <div class="dishes-group" ng-repeat="cat in cats">
-            <h3 class="dishes-title">{{cat}}</h3>
+        <div class="dishes-group" ng-repeat="category in categories">
+            <h3 class="dishes-title">{{category}}</h3>
             <ul class="dishes-list">
 
-                <li class="dish" ng-repeat="dish in dishes | filterByCategory : cat | orderBy : 'name'">
+                <li class="dish" ng-repeat="dish in dishes | filterDishesByCategory : category | orderBy : 'name'">
                     <img class="dish-image" ng-src="{{dish.image_url}}" alt="{{dish.name}}"/>
                     <div class="dish-content">
                         <h4 class="dish-name">{{dish.name}}</h4>
                         <div class="dish-description">
                             <p class="dish-text">{{dish.description}}<br/>{{dish.category}}</p>
                             <div class="dish-info">
-                                <span class="dish-weight">{{dish.weight + ' gram'}}</span>
+                                <span class="dish-weight">{{dish.weight + ' grams'}}</span>
                                 <span class="dish-price">{{(dish.price | number : 2) + ' grn'}}</span>
                                 <span class="dish-order">
                                     <button class="button" ng-click="addToOrder(dish)">Add to order</button>
@@ -35,22 +35,24 @@
     <h2 class="section-title">Order</h2>
     <div class="section-content">
 
-        <form class="order-form" action="">
+        <form class="order-form" name="order" action="">
 
             <table class="order-table">
                 <tbody>
-                    <tr>
-                        <td>Dish name</td>
+                    <tr ng-repeat="item in order">
+                        <td>{{item.name}}</td>
+                        <td>{{(item.price | number : 2) + ' grn'}}</td>
                         <td>
-                            <input class="textfield number" type="number" value="2" max="20" min="1">
+                            <!--<input class="textfield number" type="number" value="{{item.quantity}}" max="20" min="1">-->
+                            <input ng-model="quantity" value="{{item.quantity}}" ng-change="updateItemQuantity(item, quantity)"
+                                   class="textfield" type="number"  max="20" min="1">
                         </td>
-                        <td>25.50 grn</td>
-                        <td><span class="icon-close">&times;</span></td>
+                        <td><span class="icon-close" ng-click="removeFromOrder(item)">&times;</span></td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="4">204.00 grn</td>
+                        <td colspan="4">{{(orderTotal | number : 2) + ' grn'}}</td>
                     </tr>
                     <tr>
                         <td colspan="4">
