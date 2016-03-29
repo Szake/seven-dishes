@@ -1,5 +1,5 @@
 <!-- Dishes -->
-<div class="dishes section">
+<div id="dishes" class="dishes section">
     <h2 class="section-title">Dishes</h2>
     <div class="section-content">
         <div class="dishes-errors">{{dishesErrors}}</div>
@@ -15,7 +15,7 @@
                             <p class="dish-text">{{dish.description}}<br/>{{dish.category}}</p>
                             <div class="dish-info">
                                 <span class="dish-weight">{{dish.weight + ' grams'}}</span>
-                                <span class="dish-price">{{(dish.price | number : 2) + ' grn'}}</span>
+                                <span class="dish-price">{{(dish.price | number : 2) + ' UAH'}}</span>
                                 <span class="dish-order">
                                     <button class="button" ng-click="addToOrder(dish)">Add to order</button>
                                 </span>
@@ -31,10 +31,11 @@
 </div>
 
 <!-- Order -->
-<div class="order section">
+<div id="order" class="order section">
     <h2 class="section-title">Order</h2>
     <div class="section-content">
         <div class="order-errors">{{orderErrors}}</div>
+
         <form class="order-form" ng-submit="submitOrder()" name="order" action="">
 
             <table class="order-table">
@@ -44,13 +45,13 @@
                         <td>
                             <input class="textfield" ng-model="item.quantity" ng-change="updateItemQuantity(item)" type="number" max="{{orderItemMaxQuantity}}" min="1">
                         </td>
-                        <td>{{(item.getSum() | number : 2) + ' grn'}}</td>
+                        <td>{{(item.getSum() | number : 2) + ' UAH'}}</td>
                         <td><span class="icon-close" ng-click="removeFromOrder(item)">&times;</span></td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="4">{{(orderTotal | number : 2) + ' grn'}}</td>
+                        <td colspan="4">{{(orderTotal | number : 2) + ' UAH'}}</td>
                     </tr>
                     <tr>
                         <td colspan="4">
@@ -63,6 +64,38 @@
             </table>
 
         </form>
+
+        <div id="printed" class="printed">
+            <p>Name: {{orderName}}</p>
+            <p>phone: {{orderPhone}}</p>
+
+            <table class="printed-table">
+                <thead>
+                    <tr>
+                        <th>Dish name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Sum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in orderList">
+                        <td>{{item.name}}</td>
+                        <td>{{(item.price | number : 2) + ' UAH'}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{(item.getSum() | number : 2) + ' UAH'}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{(orderTotal | number : 2) + ' UAH'}}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
 
     </div>
 </div>

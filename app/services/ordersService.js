@@ -3,11 +3,12 @@ app.service('orders', ['$rootScope', '$log', 'helpers', function($rootScope, $lo
   var list = [];
   var maxQuantity = 20;
   var total = 0;
+  var order = {};
 
   var OrderItem = function(dish) {
     this.id = parseInt(dish.id);
     this.name = dish.name;
-    this.price = dish.price;
+    this.price = helpers.normalizeNumber(dish.price);
     this.quantity = 1;
     this.sum = helpers.normalizeNumber(this.price * this.quantity);
 
@@ -75,8 +76,6 @@ app.service('orders', ['$rootScope', '$log', 'helpers', function($rootScope, $lo
       return;
     }
 
-    var order = {};
-
     order.id = id;
     order.name = name;
 
@@ -92,5 +91,9 @@ app.service('orders', ['$rootScope', '$log', 'helpers', function($rootScope, $lo
 
     return JSON.stringify(order, '', 2);
   };
-
+  this.clearOrder = function() {
+    total = 0;
+    list = [];
+    order = {};
+  };
 }]);

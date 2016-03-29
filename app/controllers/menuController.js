@@ -1,9 +1,9 @@
-app.controller('menuCtrl', ['$scope', '$log', 'dishes', 'orders', 'helpers', function($scope, $log, dishesFactory, orders, helpers) {
+app.controller('menuCtrl', ['$scope', '$log', 'dishes', 'orders', 'helpers', 'savePdf', function($scope, $log, dishes, orders, helpers, savePdf) {
 
-  dishesFactory.getDishes().then(
+  dishes.getDishes().then(
     function(response) {
 
-      $scope.dishes = dishesFactory.buildDishes(response.data);
+      $scope.dishes = dishes.buildDishes(response.data);
 
       // Get unique categories from the Dishes
       $scope.categories = $scope.dishes
@@ -35,7 +35,19 @@ app.controller('menuCtrl', ['$scope', '$log', 'dishes', 'orders', 'helpers', fun
 
   $scope.submitOrder = function() {
     $log.info('Submitting form...');
+
     $log.info(orders.createOrder($scope.orderName, $scope.orderPhone));
+
+    if (confirm('Save an order into pdf?')) {
+      savePdf.createPdf();
+    }
+
+    orders.clearOrder();
+
+    $scope.orderName = '';
+    $scope.orderPhone = '';
+    $scope.orderList = orders.getOrderItems();
+    $scope.orderTotal = orders.getOrderTotal();
   };
 
   $scope.updateItemQuantity = function(item) {

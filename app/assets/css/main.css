@@ -138,7 +138,9 @@ body {
     width: 100%;
     border: none;
     border-collapse: collapse;
+    background: none;
 }
+.order-table th,
 .order-table td {
     padding: 6px;
     text-align: right;
@@ -153,6 +155,12 @@ body {
 .order-table tfoot tr:first-child td {
     padding-top: 20px;
     border-top: 2px solid #000;
+}
+
+
+.printed {
+    height: 0;
+    visibility: hidden;
 }
 
 
@@ -175,7 +183,7 @@ body {
 .textfield:focus {
     outline: none;
 }
-.textfield.ng-dirty.ng-invalid {
+.textfield.ng-not-empty.ng-invalid {
     border-color: #f00;
 }
 
