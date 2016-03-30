@@ -4,18 +4,18 @@
     <div class="section-content">
         <div class="dishes-errors">{{dishesErrors}}</div>
         <div class="dishes-group" ng-repeat="category in categories">
-            <h3 class="dishes-title">{{category}}</h3>
+            <h3 class="dishes-title">{{::category}}</h3>
             <ul class="dishes-list">
 
-                <li class="dish" ng-repeat="dish in dishes | filterDishesByCategory : category | orderBy : 'name'">
-                    <img class="dish-image" ng-src="{{dish.image_url}}" alt="{{dish.name}}"/>
+                <li class="dish" ng-repeat="dish in dishes | filterDishesByCategory : category">
+                    <img class="dish-image" ng-src="{{::dish.image_url}}" alt="{{::dish.name}}"/>
                     <div class="dish-content">
-                        <h4 class="dish-name">{{dish.name}}</h4>
+                        <h4 class="dish-name">{{::dish.name}}</h4>
                         <div class="dish-description">
-                            <p class="dish-text">{{dish.description}}<br/>{{dish.category}}</p>
+                            <p class="dish-text">{{::dish.description}}</p>
                             <div class="dish-info">
-                                <span class="dish-weight">{{dish.weight + ' grams'}}</span>
-                                <span class="dish-price">{{(dish.price | number : 2) + ' UAH'}}</span>
+                                <span class="dish-weight">{{::dish.weight + ' grams'}}</span>
+                                <span class="dish-price">{{::(dish.price | number : 2) + ' UAH'}}</span>
                                 <span class="dish-order">
                                     <button class="button" ng-click="addToOrder(dish)">Add to order</button>
                                 </span>
